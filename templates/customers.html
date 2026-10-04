@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Customer Management</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <div class="header">
+        <h1>Bank Management System</h1>
+        <p>Customer Management</p>
+    </div>
+
+    <div class="container">
+
+        <a href="/dashboard" class="back-link">
+            ← Back to Dashboard
+        </a>
+
+        <!-- Add Customer -->
+        <div class="form-box">
+
+            <h2>Add New Customer</h2>
+
+            <form method="POST">
+
+                <label>Name</label>
+                <br>
+                <input
+                    type="text"
+                    name="name"
+                    placeholder="Enter customer name"
+                    required
+                >
+
+                <br><br>
+
+                <label>Mobile</label>
+                <br>
+                <input
+                    type="text"
+                    name="mobile"
+                    placeholder="Enter mobile number"
+                    required
+                >
+
+                <br><br>
+
+                <label>Email</label>
+                <br>
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="Enter email"
+                >
+
+                <br><br>
+
+                <label>Address</label>
+                <br>
+                <input
+                    type="text"
+                    name="address"
+                    placeholder="Enter address"
+                >
+
+                <br><br>
+
+                <label>Date of Birth</label>
+                <br>
+                <input
+                    type="date"
+                    name="date_of_birth"
+                >
+
+                <br><br>
+
+                <button type="submit">
+                    Add Customer
+                </button>
+
+            </form>
+
+        </div>
+
+        <!-- Customer List -->
+        <div class="table-box">
+
+            <h2>Customer List</h2>
+
+            <table>
+
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Mobile</th>
+                    <th>Email</th>
+                    <th>Address</th>
+                    <th>Date of Birth</th>
+                </tr>
+
+                {% for customer in customers %}
+
+                <tr>
+
+                    <td>{{ customer.customer_id }}</td>
+
+                    <td>{{ customer.name }}</td>
+
+                    <td>{{ customer.mobile }}</td>
+
+                    <td>{{ customer.email }}</td>
+
+                    <td>{{ customer.address }}</td>
+
+                    <td>{{ customer.date_of_birth }}</td>
+
+                </tr>
+
+                {% endfor %}
+
+            </table>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

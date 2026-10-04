@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bank Reports</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>Bank Management System</h1>
+        <p>Reports</p>
+    </div>
+
+    <div class="container">
+
+        <a href="/dashboard" class="back-link">
+            ← Back to Dashboard
+        </a>
+
+        <h2>Bank Reports</h2>
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>Total Customers</h3>
+                <p>{{ total_customers }}</p>
+            </div>
+
+            <div class="card">
+                <h3>Total Accounts</h3>
+                <p>{{ total_accounts }}</p>
+            </div>
+
+            <div class="card">
+                <h3>Active Accounts</h3>
+                <p>{{ active_accounts }}</p>
+            </div>
+
+            <div class="card">
+                <h3>Total Transactions</h3>
+                <p>{{ total_transactions }}</p>
+            </div>
+
+            <div class="card">
+                <h3>Total Deposits</h3>
+                <p>₹{{ total_deposits }}</p>
+            </div>
+
+            <div class="card">
+                <h3>Total Withdrawals</h3>
+                <p>₹{{ total_withdrawals }}</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

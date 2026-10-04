@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Transaction Management</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <div class="header">
+        <h1>Bank Management System</h1>
+        <p>Transaction Management</p>
+    </div>
+
+    <div class="container">
+
+        <a href="/dashboard" class="back-link">
+            ← Back to Dashboard
+        </a>
+
+        <!-- New Transaction -->
+        <div class="form-box">
+
+            <h2>New Transaction</h2>
+
+            <form method="POST">
+
+                <label>Account</label>
+                <br>
+
+                <select name="account_id" required>
+
+                    <option value="">
+                        Select Account
+                    </option>
+
+                    {% for account in accounts %}
+
+                    <option value="{{ account.account_id }}">
+                        {{ account.account_id }} -
+                        {{ account.name }} -
+                        {{ account.account_type }} -
+                        Balance: ₹{{ account.balance }}
+                    </option>
+
+                    {% endfor %}
+
+                </select>
+
+                <br><br>
+
+                <label>Transaction Type</label>
+                <br>
+
+                <select name="transaction_type" required>
+
+                    <option value="">
+                        Select Transaction Type
+                    </option>
+
+                    <option value="Deposit">
+                        Deposit
+                    </option>
+
+                    <option value="Withdrawal">
+                        Withdrawal
+                    </option>
+
+                </select>
+
+                <br><br>
+
+                <label>Amount</label>
+                <br>
+
+                <input
+                    type="number"
+                    name="amount"
+                    placeholder="Enter amount"
+                    step="0.01"
+                    min="1"
+                    required
+                >
+
+                <br><br>
+
+                <label>Description</label>
+                <br>
+
+                <input
+                    type="text"
+                    name="description"
+                    placeholder="Example: Cash Deposit"
+                >
+
+                <br><br>
+
+                <button type="submit">
+                    Submit Transaction
+                </button>
+
+            </form>
+
+        </div>
+
+        <!-- Transaction History -->
+        <div class="table-box">
+
+            <h2>Transaction History</h2>
+
+            <table>
+
+                <tr>
+                    <th>Transaction ID</th>
+                    <th>Account ID</th>
+                    <th>Customer Name</th>
+                    <th>Type</th>
+                    <th>Amount</th>
+                    <th>Date</th>
+                    <th>Description</th>
+                </tr>
+
+                {% for transaction in transactions %}
+
+                <tr>
+
+                    <td>
+                        {{ transaction.transaction_id }}
+                    </td>
+
+                    <td>
+                        {{ transaction.account_id }}
+                    </td>
+
+                    <td>
+                        {{ transaction.name }}
+                    </td>
+
+                    <td>
+                        {{ transaction.transaction_type }}
+                    </td>
+
+                    <td>
+                        ₹{{ transaction.amount }}
+                    </td>
+
+                    <td>
+                        {{ transaction.transaction_date }}
+                    </td>
+
+                    <td>
+                        {{ transaction.description }}
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </table>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

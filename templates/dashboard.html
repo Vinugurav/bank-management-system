@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bank Management Dashboard</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <div class="header">
+        <h1>Bank Management System</h1>
+        <p>Customer & Account Management Dashboard</p>
+    </div>
+
+    <div class="container">
+
+        <h2>Dashboard</h2>
+
+        <!-- Dashboard Cards -->
+        <div class="cards">
+
+            <div class="card">
+                <h3>Total Customers</h3>
+                <p>{{ total_customers }}</p>
+            </div>
+
+            <div class="card">
+                <h3>Total Accounts</h3>
+                <p>{{ total_accounts }}</p>
+            </div>
+
+            <div class="card">
+                <h3>Active Accounts</h3>
+                <p>{{ active_accounts }}</p>
+            </div>
+
+            <div class="card">
+                <h3>Total Transactions</h3>
+                <p>{{ total_transactions }}</p>
+            </div>
+
+        </div>
+
+        <!-- Management Menu -->
+        <h2>Management</h2>
+
+        <div class="menu">
+
+            <a href="/customers">
+                Customers
+            </a>
+
+            <a href="/accounts">
+                Accounts
+            </a>
+
+            <a href="/transactions">
+                Transactions
+            </a>
+
+            <a href="/reports">
+                Reports
+            </a>
+
+        </div>
+
+        <br><br>
+
+        <a href="/logout" class="logout-btn">
+             Logout
+        </a>
+
+    </div>
+
+</body>
+</html>

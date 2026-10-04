@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Account Management</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <div class="header">
+        <h1>Bank Management System</h1>
+        <p>Account Management</p>
+    </div>
+
+    <div class="container">
+
+        <a href="/dashboard" class="back-link">
+            ← Back to Dashboard
+        </a>
+
+        <!-- Create Account -->
+        <div class="form-box">
+
+            <h2>Create New Account</h2>
+
+            <form method="POST">
+
+                <label>Customer</label>
+                <br>
+
+                <select name="customer_id" required>
+
+                    <option value="">
+                        Select Customer
+                    </option>
+
+                    {% for customer in customers %}
+
+                    <option value="{{ customer.customer_id }}">
+                        {{ customer.customer_id }} - {{ customer.name }}
+                    </option>
+
+                    {% endfor %}
+
+                </select>
+
+                <br><br>
+
+                <label>Account Type</label>
+                <br>
+
+                <select name="account_type" required>
+
+                    <option value="">
+                        Select Account Type
+                    </option>
+
+                    <option value="Savings">
+                        Savings
+                    </option>
+
+                    <option value="Current">
+                        Current
+                    </option>
+
+                </select>
+
+                <br><br>
+
+                <label>Branch</label>
+                <br>
+
+                <input
+                    type="text"
+                    name="branch"
+                    placeholder="Enter branch name"
+                    required
+                >
+
+                <br><br>
+
+                <label>Opening Balance</label>
+                <br>
+
+                <input
+                    type="number"
+                    name="balance"
+                    placeholder="Enter opening balance"
+                    step="0.01"
+                    min="0"
+                    value="0"
+                    required
+                >
+
+                <br><br>
+
+                <button type="submit">
+                    Create Account
+                </button>
+
+            </form>
+
+        </div>
+
+        <!-- Account List -->
+        <div class="table-box">
+
+            <h2>Account List</h2>
+
+            <table>
+
+                <tr>
+                    <th>Account ID</th>
+                    <th>Customer ID</th>
+                    <th>Customer Name</th>
+                    <th>Account Type</th>
+                    <th>Branch</th>
+                    <th>Balance</th>
+                    <th>Status</th>
+                    <th>Opening Date</th>
+                </tr>
+
+                {% for account in accounts %}
+
+                <tr>
+
+                    <td>{{ account.account_id }}</td>
+
+                    <td>{{ account.customer_id }}</td>
+
+                    <td>{{ account.name }}</td>
+
+                    <td>{{ account.account_type }}</td>
+
+                    <td>{{ account.branch }}</td>
+
+                    <td>₹{{ account.balance }}</td>
+
+                    <td>{{ account.status }}</td>
+
+                    <td>{{ account.opening_date }}</td>
+
+                </tr>
+
+                {% endfor %}
+
+            </table>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
